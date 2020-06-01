@@ -44,14 +44,18 @@ export const generateCrossroveredPopulation = (population) => {
       const probability = !!([...Array(8).keys()].find((value) => value === randomInt(0, 99)));
 
       if(probability) {
-        const mutationKey = [['r', 'g', 'b'][randomInt(0, 2)]];
+        const mutationKey = ['r', 'g', 'b'][randomInt(0, 2)];
         const mutationValue = randomInt(-100, 100);
         const mutationResult = genome[mutationKey] + mutationValue;
-
-        return {
+        const mutationGenome = {
           ...genome,
           [mutationKey]: mutationResult > 255 ? 255 : mutationResult < 0 ? 0 : mutationResult, 
-        }
+        };
+
+        return {
+          ...mutationGenome,
+          fitness: fitness(mutationGenome.r, mutationGenome.g, mutationGenome.b),
+        };
       }
 
       return genome;
@@ -65,7 +69,7 @@ export const generateCrossroveredPopulation = (population) => {
 
   const newPopulation = [population[0]];
 
-  for(let i=0; i<population.length; i++) {
+  for(let i=0; i<population.length-1; i++) {
     const genomeA = weightedSortFromIndex(population);
     const genomeB = weightedSortFromIndex(population);
     newPopulation.push(crossover(genomeA, genomeB));

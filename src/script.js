@@ -61,11 +61,14 @@ const generateCrossroveredPopulation = population => {
       const probability = !![...Array(8).keys()].find(value => value === randomInt(0, 99));
 
       if (probability) {
-        const mutationKey = [['r', 'g', 'b'][randomInt(0, 2)]];
+        const mutationKey = ['r', 'g', 'b'][randomInt(0, 2)];
         const mutationValue = randomInt(-100, 100);
         const mutationResult = genome[mutationKey] + mutationValue;
-        return { ...genome,
+        const mutationGenome = { ...genome,
           [mutationKey]: mutationResult > 255 ? 255 : mutationResult < 0 ? 0 : mutationResult
+        };
+        return { ...mutationGenome,
+          fitness: fitness(mutationGenome.r, mutationGenome.g, mutationGenome.b)
         };
       }
 
@@ -79,7 +82,7 @@ const generateCrossroveredPopulation = population => {
 
   const newPopulation = [population[0]];
 
-  for (let i = 0; i < population.length; i++) {
+  for (let i = 0; i < population.length - 1; i++) {
     const genomeA = weightedSortFromIndex(population);
     const genomeB = weightedSortFromIndex(population);
     newPopulation.push(crossover(genomeA, genomeB));
@@ -197,37 +200,40 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-let generation = 1;
-let population = Array.apply(null, {
-  length: 200
-}).map(() => {
-  const r = math.randomInt(0, 255);
-  const g = math.randomInt(0, 255);
-  const b = math.randomInt(0, 255);
-  return {
-    r,
-    g,
-    b,
-    fitness: math.fitness(r, g, b)
-  };
-});
+const inputPopulationSize = document.querySelector('#populationSize');
+const inputIterationsCount = document.querySelector('#iterationsCount');
+const buttonStart = document.querySelector('#start');
 
 async function start() {
+  let generation = 0;
+  let population = Array.apply(null, {
+    length: parseInt(inputPopulationSize.value)
+  }).map(() => {
+    const r = math.randomInt(0, 255);
+    const g = math.randomInt(0, 255);
+    const b = math.randomInt(0, 255);
+    return {
+      r,
+      g,
+      b,
+      fitness: math.fitness(r, g, b)
+    };
+  });
   render.population(population);
   render.rank(math.sortBetter(population));
   render.generation(generation);
 
   do {
     const sortedPopulation = math.sortBetter(population);
-    generation++;
     population = math.generateCrossroveredPopulation(sortedPopulation);
     render.population(population);
     render.rank(sortedPopulation);
     render.generation(generation);
+    generation++;
     await (0, _utils.delay)(0);
-  } while (generation <= 200);
+  } while (generation <= parseInt(inputIterationsCount.value));
 }
 
-start().then(() => console.log('started'));
+buttonStart.addEventListener('click', async () => await start());
 
 },{"./math":1,"./render":2,"./utils":4}]},{},[5]);

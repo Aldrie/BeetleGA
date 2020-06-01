@@ -7,11 +7,17 @@
   <title>GA</title>
 </head>
 <body>
-  <span class="generation">Generation: 1</span>
+  <header>
+    <div>
+      <input id="populationSize" placeholder="population size" type="number"/>
+      <span class="generation">Generation: 0</span>
+      <input id="iterationsCount" placeholder="iterations count" type="number"/>
+    </div>
+    <button id="start">Start!</button>
+  </header>
   <div class="container">
     <div class="population"></div>
-    <div class="rank">
-    </div>
+    <div class="rank"></div>
   </div>
 </body>
 </html>
