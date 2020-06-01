@@ -23,16 +23,16 @@ You need to install **browserify** and more project dependencies.
 
 ### Browserify
 ```console
-hello@world:~ npm i browserify --g
+hello@world:~$ npm i browserify --g
 or
-hello@world:~ yarn add browserify -D
+hello@world:~$ yarn add browserify -D
 ```
 
 ### Another dependencies
 ```console
-hello@world:~ npm i
+hello@world:~$ npm i
 or
-hello@world:~ yarn
+hello@world:~$ yarn
 ```
 
 ## I Hope You Enjoy :)
