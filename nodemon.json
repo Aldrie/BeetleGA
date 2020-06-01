@@ -1,0 +1,5 @@
+{
+  "watch": ["src/scripts"],
+  "ext": "js",
+  "exec": "browserify src/scripts > src/script.js -p esmify"
+}

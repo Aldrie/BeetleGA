@@ -1,0 +1,125 @@
+:root {
+  --background-color: rgb(6, 3, 43);
+  --container-bg: #eee;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: var(--background-color);
+}
+
+.container {
+  width: 100%;
+  background: var(--container-bg);
+  border-radius: 24px;
+  padding: 16px;
+  margin: 36px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 42px;
+  width: 100%;
+}
+
+.bug {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 16px;
+}
+
+.bug .color {
+  background: brown;
+  mix-blend-mode: hue;
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.bug span {
+  font-size: 12px;
+}
+
+.rank-item .bug {
+  width: 72px;
+  height: 72px;
+}
+
+.population {
+  border: solid var(--background-color) 2px;
+  width: 48%;
+  max-height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.rank {
+  border: solid var(--background-color) 2px;
+  width: 48%;
+  height: 100%;
+  max-height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+}
+
+.rank-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.rank-values {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.rank-values span {
+  font-size: 24px;
+}
+
+.generation {
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
