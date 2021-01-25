@@ -5,7 +5,7 @@ A simple solution to a simple [problem](#the-problem)!
 encoded in Javascript, using Node to transpile the code!
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" width="80"/>
-  <img src="https://jaystack.com/wp-content/uploads/2015/12/nodejs-logo-e1497443346889.png" width="80"/>
+  <img src="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png" width="80"/>
 </p>
 
 # The Problem
